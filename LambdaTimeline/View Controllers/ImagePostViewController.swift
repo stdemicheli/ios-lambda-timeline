@@ -17,6 +17,9 @@ class ImagePostViewController: ShiftableViewController {
         setImageViewHeight(with: 1.0)
         
         updateViews()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func updateViews() {
@@ -112,15 +115,34 @@ class ImagePostViewController: ShiftableViewController {
         view.layoutSubviews()
     }
     
+    func image(byFiltering image: UIImage, withEffect effect: String) -> UIImage? {
+        guard let cgImage = image.cgImage else { return image }
+        let ciImage = CIImage(cgImage: cgImage)
+
+        let filter = CIFilter(name: "CIPhotoEffect\(effect)")
+        filter?.setValue(ciImage, forKey: kCIInputImageKey)
+
+        guard let outputCIImage = filter?.outputImage,
+            let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {
+                return nil
+        }
+        
+        return UIImage(cgImage: outputCGImage)
+    }
+    
     var postController: PostController!
     var post: Post?
     var imageData: Data?
+    var image: UIImage?
+    private let context = CIContext(options: nil)
     
+    var imageFilterTypes: [(String, UIImage?)] = [("Chrome", nil), ("Fade", nil), ("Instant", nil), ("Mono", nil), ("Noir", nil), ("Process", nil), ("Tonal", nil), ("Transfer", nil)]
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var postButton: UIBarButtonItem!
+    @IBOutlet weak var collectionView: UICollectionView!
 }
 
 extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -134,6 +156,15 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         imageView.image = image
+        self.image = image
+        self.imageFilterTypes = imageFilterTypes.map { (type) -> (String, UIImage?) in
+            var newType = type
+            let filteredImage = self.image(byFiltering: image, withEffect: newType.0)
+            newType.1 = filteredImage
+            return newType
+        }
+        
+        collectionView.reloadData()
         
         setImageViewHeight(with: image.ratio)
     }
@@ -141,4 +172,35 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+extension ImagePostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageFilterTypes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageFilterCell", for: indexPath) as! ImageFilterCollectionViewCell
+        
+        let filteredImage = imageFilterTypes[indexPath.item]
+        if filteredImage.1 != nil {
+            cell.image = (filteredImage.0, filteredImage.1)
+        } else {
+            cell.image = ("", nil)
+        }
+        
+        
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseImageFilter(_:))))
+        
+        return cell
+    }
+    
+    @objc func chooseImageFilter(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.collectionView)
+        guard let indexPath = self.collectionView.indexPathForItem(at: location) else { return }
+        self.imageView.image = imageFilterTypes[indexPath.item].1
+    }
+    
+    
 }
