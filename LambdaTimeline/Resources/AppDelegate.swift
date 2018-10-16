@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
         
+        let session = AVAudioSession.sharedInstance()
+        session.requestRecordPermission { (granted) in
+            if !granted {
+                NSLog("Please give LambdaTimeline premission to access the microphone in Settings.")
+                return
+            }
+            
+            do {
+                try session.setCategory(.playAndRecord, mode: .default, options: [])
+                try session.setActive(true, options: [])
+            } catch {
+                NSLog("Error setting up audio session: \(error)")
+            }
+        }
         
         return true
     }

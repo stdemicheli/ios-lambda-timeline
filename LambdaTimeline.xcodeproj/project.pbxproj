@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0AEF6C2176748900467073 /* AudioCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */; };
 		3D12635721752443000276A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D12635621752443000276A5 /* GoogleService-Info.plist */; };
 		3D12635921753553000276A5 /* ImageFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */; };
-		3D12635B2175373C000276A5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12635A2175373C000276A5 /* CollectionViewController.swift */; };
 		4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646377B216FDE4B00E7FF73 /* AppDelegate.swift */; };
 		46463781216FDE4B00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4646377F216FDE4B00E7FF73 /* Main.storyboard */; };
 		46463783216FDE4C00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46463782216FDE4C00E7FF73 /* Assets.xcassets */; };
@@ -37,9 +37,9 @@
 
 /* Begin PBXFileReference section */
 		33A2B89DE9E21538434BD640 /* Pods-LambdaTimeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LambdaTimeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LambdaTimeline/Pods-LambdaTimeline.debug.xcconfig"; sourceTree = "<group>"; };
+		3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentTableViewCell.swift; sourceTree = "<group>"; };
 		3D12635621752443000276A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterCollectionViewCell.swift; sourceTree = "<group>"; };
-		3D12635A2175373C000276A5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		46463778216FDE4B00E7FF73 /* LambdaTimeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LambdaTimeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4646377B216FDE4B00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46463780216FDE4B00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,7 +165,6 @@
 				46A0366C2170158900E7FF73 /* SignInViewController.swift */,
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				46CFE6F421707D0000E7FF73 /* ImagePostViewController.swift */,
-				3D12635A2175373C000276A5 /* CollectionViewController.swift */,
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
 			);
 			path = "View Controllers";
@@ -176,6 +175,7 @@
 			children = (
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
 				3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */,
+				3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +383,7 @@
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
+				3D0AEF6C2176748900467073 /* AudioCommentTableViewCell.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
 				46463790216FFD1B00E7FF73 /* Post.swift in Sources */,
@@ -396,7 +397,6 @@
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
-				3D12635B2175373C000276A5 /* CollectionViewController.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,
 				46CFE6F721707FA600E7FF73 /* UIViewController+InformationalAlert.swift in Sources */,
 			);

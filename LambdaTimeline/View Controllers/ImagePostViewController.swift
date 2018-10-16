@@ -20,6 +20,7 @@ class ImagePostViewController: ShiftableViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
     }
     
     func updateViews() {
@@ -114,6 +115,10 @@ class ImagePostViewController: ShiftableViewController {
         
         view.layoutSubviews()
     }
+    @IBAction func toggleImageFilterType(_ sender: Any) {
+        showEffectTypes = !showEffectTypes
+        self.collectionView.reloadData()
+    }
     
     func image(byFiltering image: UIImage, withEffect effect: String) -> UIImage? {
         guard let cgImage = image.cgImage else { return image }
@@ -130,13 +135,54 @@ class ImagePostViewController: ShiftableViewController {
         return UIImage(cgImage: outputCGImage)
     }
     
+    private func image(byFiltering image: UIImage, withColorControl colorControl: String) -> UIImage? {
+        // CIFilter only take in CIImage formats, so we need to convert the UIImage to a CIImage. image.cgImage is a wrapper
+        guard let cgImage = image.cgImage else { return image }
+        
+        let ciImage = CIImage(cgImage: cgImage)
+        
+        let filter = CIFilter(name: "CIColorControls")!
+        
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filter.setValue(0, forKey: kCIInputBrightnessKey)
+        filter.setValue(1, forKey: kCIInputContrastKey)
+        filter.setValue(1, forKey: kCIInputSaturationKey)
+        
+        // Need to use key-value coding
+        switch colorControl {
+        case "Brightness":
+            filter.setValue(colorControlSlider.value, forKey: kCIInputBrightnessKey)
+        case "Contrast":
+            filter.setValue(colorControlSlider.value, forKey: kCIInputContrastKey)
+        case "Saturation":
+            filter.setValue(colorControlSlider.value, forKey: kCIInputSaturationKey)
+        default:
+            break
+        }
+        
+        
+        // Render CIImage back to a CGImage
+        guard let outputCIImage = filter.outputImage,
+            let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) // .extent is the whole image
+            else {
+                return nil
+        }
+        
+        return UIImage(cgImage: outputCGImage)
+    }
+    
     var postController: PostController!
     var post: Post?
     var imageData: Data?
     var image: UIImage?
     private let context = CIContext(options: nil)
+    @IBOutlet weak var filterSettingsView: UIView!
+    var colorControlSlider = UISlider(frame: CGRect.zero)
     
-    var imageFilterTypes: [(String, UIImage?)] = [("Chrome", nil), ("Fade", nil), ("Instant", nil), ("Mono", nil), ("Noir", nil), ("Process", nil), ("Tonal", nil), ("Transfer", nil)]
+    var imageEffectTypes: [(String, UIImage?)] = [("Chrome", nil), ("Fade", nil), ("Instant", nil), ("Mono", nil), ("Noir", nil), ("Process", nil), ("Tonal", nil), ("Transfer", nil)]
+    var imageColorControlTypes: [(String, UIImage?)] = [("Saturation", UIImage(named: "saturation")), ("Brightness", UIImage(named: "brightness")), ("Contrast", UIImage(named: "contrast"))]
+    var showEffectTypes = true
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var chooseImageButton: UIButton!
@@ -157,7 +203,7 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         
         imageView.image = image
         self.image = image
-        self.imageFilterTypes = imageFilterTypes.map { (type) -> (String, UIImage?) in
+        self.imageEffectTypes = imageEffectTypes.map { (type) -> (String, UIImage?) in
             var newType = type
             let filteredImage = self.image(byFiltering: image, withEffect: newType.0)
             newType.1 = filteredImage
@@ -177,19 +223,15 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
 extension ImagePostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageFilterTypes.count
+        return showEffectTypes ? imageEffectTypes.count : imageColorControlTypes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageFilterCell", for: indexPath) as! ImageFilterCollectionViewCell
         
-        let filteredImage = imageFilterTypes[indexPath.item]
-        if filteredImage.1 != nil {
-            cell.image = (filteredImage.0, filteredImage.1)
-        } else {
-            cell.image = ("", nil)
-        }
+        let filteredImage = showEffectTypes ? imageEffectTypes[indexPath.item] : imageColorControlTypes[indexPath.item]
         
+        cell.image = (filteredImage.0, filteredImage.1)
         
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseImageFilter(_:))))
         
@@ -197,10 +239,28 @@ extension ImagePostViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     @objc func chooseImageFilter(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self.collectionView)
-        guard let indexPath = self.collectionView.indexPathForItem(at: location) else { return }
-        self.imageView.image = imageFilterTypes[indexPath.item].1
+        if showEffectTypes {
+            let location = sender.location(in: self.collectionView)
+            guard let indexPath = self.collectionView.indexPathForItem(at: location) else { return }
+            self.imageView.image = imageEffectTypes[indexPath.item].1
+        } else {
+            collectionView.isHidden = true
+            let slider = UISlider(frame: CGRect.zero)
+            slider.minimumValue = -1
+            slider.maximumValue = 1
+            slider.value = 0
+            slider.addTarget(self, action: #selector(adjustSlider(_:)), for: .valueChanged)
+            slider.translatesAutoresizingMaskIntoConstraints = false
+            self.filterSettingsView.addSubview(slider)
+            slider.centerXAnchor.constraint(equalTo: filterSettingsView.centerXAnchor).isActive = true
+            slider.centerYAnchor.constraint(equalTo: filterSettingsView.centerYAnchor).isActive = true
+            slider.leadingAnchor.constraint(equalTo: filterSettingsView.leadingAnchor, constant: 8).isActive = true
+            slider.trailingAnchor.constraint(equalTo: filterSettingsView.trailingAnchor, constant: -8).isActive = true
+        }
     }
     
+    @objc func adjustSlider(_ sender: UISlider) {
+        imageView.image = self.image(byFiltering: self.imageView.image!, withColorControl: "Brightness")
+    }
     
 }

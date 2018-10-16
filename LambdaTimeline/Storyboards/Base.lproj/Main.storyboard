@@ -115,8 +115,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-If-ddw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PkI-rS-ua9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PkI-rS-ua9">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="405"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQ3-V3-hIf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -146,86 +146,102 @@
                                                     <constraint firstItem="VxD-cu-jHT" firstAttribute="top" secondItem="4eK-5F-H5h" secondAttribute="top" id="rjG-je-eTX"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your post a title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-OA-6Ou">
-                                                <rect key="frame" x="0.0" y="383" width="375" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your post a title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-OA-6Ou">
+                                                <rect key="frame" x="0.0" y="375" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VC2-cz-oxz">
-                                        <rect key="frame" x="8" y="421" width="359" height="130"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="VC2-cz-oxz" secondAttribute="height" multiplier="375:136" id="doC-6a-Kz9"/>
-                                        </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0tH-9d-5Oz">
-                                            <size key="itemSize" width="112" height="136"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageFilterCell" id="cox-Xh-Whd" customClass="ImageFilterCollectionViewCell" customModule="LambdaTimeline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-3" width="112" height="136"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgd-zg-KOZ">
+                                        <rect key="frame" x="0.0" y="405" width="375" height="201"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qKV-GT-6df">
+                                                <rect key="frame" x="8" y="41" width="359" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="136"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exN-X1-k5A">
-                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="136"/>
-                                                            <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SST-re-G74">
+                                                <subviews>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VC2-cz-oxz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="130"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="VC2-cz-oxz" secondAttribute="height" multiplier="375:136" id="doC-6a-Kz9"/>
+                                                        </constraints>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0tH-9d-5Oz">
+                                                            <size key="itemSize" width="112" height="136"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageFilterCell" id="cox-Xh-Whd" customClass="ImageFilterCollectionViewCell" customModule="LambdaTimeline" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="-3" width="112" height="136"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="136"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqd-Aj-HQA">
-                                                                            <rect key="frame" x="40.5" y="0.0" width="31" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aio-d9-19f">
-                                                                            <rect key="frame" x="0.0" y="20.5" width="112" height="115.5"/>
-                                                                        </imageView>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exN-X1-k5A">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="136"/>
+                                                                            <subviews>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SST-re-G74">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="136"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqd-Aj-HQA">
+                                                                                            <rect key="frame" x="31" y="0.0" width="50" height="50"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aio-d9-19f">
+                                                                                            <rect key="frame" x="0.0" y="50" width="112" height="86"/>
+                                                                                        </imageView>
+                                                                                    </subviews>
+                                                                                </stackView>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="SST-re-G74" secondAttribute="trailing" id="9Pg-Q8-zK8"/>
+                                                                                <constraint firstItem="SST-re-G74" firstAttribute="top" secondItem="exN-X1-k5A" secondAttribute="top" id="lBX-yt-0hc"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="SST-re-G74" secondAttribute="bottom" id="oXQ-E3-Xgg"/>
+                                                                                <constraint firstItem="SST-re-G74" firstAttribute="leading" secondItem="exN-X1-k5A" secondAttribute="leading" id="zRU-iO-pYA"/>
+                                                                            </constraints>
+                                                                        </view>
                                                                     </subviews>
-                                                                </stackView>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="SST-re-G74" secondAttribute="trailing" id="9Pg-Q8-zK8"/>
-                                                                <constraint firstItem="SST-re-G74" firstAttribute="top" secondItem="exN-X1-k5A" secondAttribute="top" id="lBX-yt-0hc"/>
-                                                                <constraint firstAttribute="bottom" secondItem="SST-re-G74" secondAttribute="bottom" id="oXQ-E3-Xgg"/>
-                                                                <constraint firstItem="SST-re-G74" firstAttribute="leading" secondItem="exN-X1-k5A" secondAttribute="leading" id="zRU-iO-pYA"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                </view>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="exN-X1-k5A" secondAttribute="trailing" id="JJS-lg-V0B"/>
-                                                    <constraint firstAttribute="bottom" secondItem="exN-X1-k5A" secondAttribute="bottom" id="Tlf-nU-P21"/>
-                                                    <constraint firstItem="exN-X1-k5A" firstAttribute="leading" secondItem="cox-Xh-Whd" secondAttribute="leading" id="WEU-g1-laR"/>
-                                                    <constraint firstItem="exN-X1-k5A" firstAttribute="top" secondItem="cox-Xh-Whd" secondAttribute="top" id="cTU-Fi-zLV"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="filterDescriptionLabel" destination="Pqd-Aj-HQA" id="7Tt-a9-cS1"/>
-                                                    <outlet property="filterImageView" destination="aio-d9-19f" id="fku-Bc-tkW"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
+                                                                </view>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="exN-X1-k5A" secondAttribute="trailing" id="JJS-lg-V0B"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="exN-X1-k5A" secondAttribute="bottom" id="Tlf-nU-P21"/>
+                                                                    <constraint firstItem="exN-X1-k5A" firstAttribute="leading" secondItem="cox-Xh-Whd" secondAttribute="leading" id="WEU-g1-laR"/>
+                                                                    <constraint firstItem="exN-X1-k5A" firstAttribute="top" secondItem="cox-Xh-Whd" secondAttribute="top" id="cTU-Fi-zLV"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="filterDescriptionLabel" destination="Pqd-Aj-HQA" id="7Tt-a9-cS1"/>
+                                                                    <outlet property="filterImageView" destination="aio-d9-19f" id="fku-Bc-tkW"/>
+                                                                </connections>
+                                                            </collectionViewCell>
+                                                        </cells>
+                                                    </collectionView>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voo-du-Pgp">
+                                                        <rect key="frame" x="0.0" y="130" width="359" height="30"/>
+                                                        <state key="normal" title="Show more filters"/>
+                                                        <connections>
+                                                            <action selector="toggleImageFilterType:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="dEn-7d-enT"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PkI-rS-ua9" secondAttribute="trailing" id="1cC-FG-cAC"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="top" secondItem="9qd-If-ddw" secondAttribute="top" id="3tV-sW-NF1"/>
-                                    <constraint firstItem="VC2-cz-oxz" firstAttribute="top" secondItem="PkI-rS-ua9" secondAttribute="bottom" constant="8" id="Hmd-xa-hwA"/>
-                                    <constraint firstItem="VC2-cz-oxz" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" constant="8" id="Mpd-ml-B46"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" id="bPK-xN-eaO"/>
                                     <constraint firstAttribute="bottom" secondItem="PkI-rS-ua9" secondAttribute="bottom" id="cfV-7c-ubK"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="width" secondItem="9qd-If-ddw" secondAttribute="width" id="dWh-6N-mO7"/>
-                                    <constraint firstAttribute="height" priority="250" constant="603" id="qMm-7B-8rp"/>
-                                    <constraint firstAttribute="trailing" secondItem="VC2-cz-oxz" secondAttribute="trailing" constant="8" id="ve1-L3-zvo"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -249,6 +265,7 @@
                     <connections>
                         <outlet property="chooseImageButton" destination="VxD-cu-jHT" id="KVs-no-MbU"/>
                         <outlet property="collectionView" destination="VC2-cz-oxz" id="waG-XZ-uqV"/>
+                        <outlet property="filterSettingsView" destination="wgd-zg-KOZ" id="MYD-9R-tzD"/>
                         <outlet property="imageHeightConstraint" destination="MHD-wr-Gq9" id="HyG-8g-Ck1"/>
                         <outlet property="imageView" destination="4eK-5F-H5h" id="e7m-c5-Xhz"/>
                         <outlet property="postButton" destination="hsH-Uv-tug" id="ZBn-KE-cpU"/>
@@ -398,16 +415,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="ZF5-WY-6Y2">
-                        <barButtonItem key="rightBarButtonItem" title="Comment" id="xrT-JD-ey3">
-                            <connections>
-                                <action selector="createComment:" destination="OyM-8q-Icp" id="2IY-cQ-DLq"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Comment" id="xrT-JD-ey3">
+                                <connections>
+                                    <action selector="createComment:" destination="OyM-8q-Icp" id="2IY-cQ-DLq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Record" id="W5P-Go-p0m">
+                                <connections>
+                                    <action selector="record:" destination="OyM-8q-Icp" id="3Kg-ZL-hzw"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="uQC-8y-kuu" id="OBX-uv-64E"/>
                         <outlet property="imageView" destination="Q0L-w5-qUw" id="0v7-ZB-mgi"/>
                         <outlet property="imageViewAspectRatioConstraint" destination="y1B-iX-x3e" id="wIt-kh-Tzd"/>
+                        <outlet property="recordButton" destination="W5P-Go-p0m" id="6Bu-XG-vSU"/>
                         <outlet property="titleLabel" destination="jyy-BX-c2c" id="UEd-xO-ipC"/>
                     </connections>
                 </tableViewController>
