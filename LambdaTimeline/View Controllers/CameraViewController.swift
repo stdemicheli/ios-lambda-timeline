@@ -13,8 +13,11 @@ import Photos
 class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     // MARK: - Properties
+    let postController = PostController()
     private var captureSession: AVCaptureSession!
     private var recordOutput: AVCaptureMovieFileOutput!
+    
+    @IBOutlet weak var spinnerView: UIView!
     
     @IBOutlet weak var previewView: CameraPreviewView!
     @IBOutlet weak var recordButton: UIButton!
@@ -57,23 +60,48 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         DispatchQueue.main.async {
             self.updateViews()
             
-            // Request authorization and then save the video to the PHPhotoLibrary
-            PHPhotoLibrary.requestAuthorization { (status) in
-                guard status == .authorized else { return }
-                
-                PHPhotoLibrary.shared().performChanges({
-                    // Save the video in the PhotoLibrary
-                    PHAssetCreationRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL)
-                }, completionHandler: { (success, error) in
-                    if let error = error {
-                        NSLog("Error saving video: \(error)")
-                        return
+            
+            let alert = UIAlertController(title: "Save video", message: "Which kind of post do you want to create?", preferredStyle: .alert)
+            
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Enter a video title"
+            })
+            
+            let savePostAction = UIAlertAction(title: "Save", style: .default) { (_) in
+                // Save video and store in in Firebase
+                self.runActivityIndicator()
+                do {
+                    let videoData = try Data(contentsOf: outputFileURL)
+                    let videoTitle = alert.textFields![0].text ?? ""
+                    self.postController.createPost(with: videoTitle, ofType: .video, mediaData: videoData, ratio: nil, completion: { (success) in
+                        NSLog("Saved to Firebase store")
+                        // TODO: Delete video from file manager
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } catch {
+                    NSLog("Error generating video data \(error)")
+                    let errorAlert = UIAlertController(title: "Error", message: "Error generating video data", preferredStyle: .alert)
+                    
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel) { (_) in
+                        self.navigationController?.popViewController(animated: true)
                     }
                     
-                    NSLog("Saving succeeded")
-                    // Should delete the outputFile at URL... (with FileManager)
-                })
+                    errorAlert.addAction(okAction)
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+                
             }
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            alert.addAction(savePostAction)
+            alert.addAction(cancelAction)
+            
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -128,6 +156,13 @@ class CameraViewController: UIViewController, AVCaptureFileOutputRecordingDelega
         } else {
             fatalError("Missing expected back camera device")
         }
+    }
+    
+    private func runActivityIndicator() {
+        self.spinnerView.isHidden = false
+        self.spinnerView.layer.cornerRadius = 15
+        self.spinnerView.layer.masksToBounds = true
+        self.previewView.alpha = 0.5
     }
     
 

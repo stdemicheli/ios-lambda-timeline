@@ -99,6 +99,7 @@
                         <segue destination="1Aw-4e-BW2" kind="show" identifier="AddImagePost" id="jaI-fq-Woc"/>
                         <segue destination="OyM-8q-Icp" kind="show" identifier="ViewImagePost" id="hhs-es-AdQ"/>
                         <segue destination="iLn-f9-Ptx" kind="show" identifier="AddVideoPost" id="EtD-PF-jSN"/>
+                        <segue destination="Rc2-Qf-Jwl" kind="show" identifier="ViewVideoPost" id="0hC-hN-F1G"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRz-lg-pQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-If-ddw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PkI-rS-ua9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="405"/>
@@ -286,10 +287,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDr-ML-xbB" customClass="CameraPreviewView" customModule="LambdaTimeline" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jao-E9-rND">
-                                        <rect key="frame" x="152.5" y="473" width="70" height="70"/>
+                                        <rect key="frame" x="152.5" y="517" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="A6t-cL-ViV"/>
                                             <constraint firstAttribute="width" constant="70" id="elG-Rs-JFS"/>
@@ -300,11 +301,28 @@
                                             <action selector="toggleRecord:" destination="iLn-f9-Ptx" eventType="touchUpInside" id="RDv-0z-OAc"/>
                                         </connections>
                                     </button>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4r-eb-HzP">
+                                        <rect key="frame" x="147.5" y="283.5" width="80" height="80"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-lF-4c3">
+                                                <rect key="frame" x="30" y="30" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="FjR-Jd-W1J"/>
+                                            <constraint firstItem="Oap-lF-4c3" firstAttribute="centerX" secondItem="q4r-eb-HzP" secondAttribute="centerX" id="JSW-HF-baV"/>
+                                            <constraint firstAttribute="height" constant="80" id="m1T-43-wuE"/>
+                                            <constraint firstItem="Oap-lF-4c3" firstAttribute="centerY" secondItem="q4r-eb-HzP" secondAttribute="centerY" id="pEK-AP-ohJ"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="jao-E9-rND" secondAttribute="bottom" constant="60" id="AZl-6U-zmI"/>
                                     <constraint firstItem="jao-E9-rND" firstAttribute="centerX" secondItem="wDr-ML-xbB" secondAttribute="centerX" id="KZK-Wg-iV4"/>
+                                    <constraint firstItem="q4r-eb-HzP" firstAttribute="centerY" secondItem="wDr-ML-xbB" secondAttribute="centerY" id="ccZ-Fe-YQD"/>
+                                    <constraint firstItem="q4r-eb-HzP" firstAttribute="centerX" secondItem="wDr-ML-xbB" secondAttribute="centerX" id="mmg-Gl-3jK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -320,11 +338,12 @@
                     <connections>
                         <outlet property="previewView" destination="wDr-ML-xbB" id="HnB-Vc-oR1"/>
                         <outlet property="recordButton" destination="jao-E9-rND" id="DXw-Dv-ih9"/>
+                        <outlet property="spinnerView" destination="q4r-eb-HzP" id="L4v-tM-nz5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfV-4T-vyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="108"/>
+            <point key="canvasLocation" x="2820" y="107.49625187406298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gdW-Je-ais">
@@ -337,7 +356,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hPa-Td-5A3" kind="relationship" relationship="rootViewController" id="xgj-Z6-deA"/>
+                        <segue destination="Rc2-Qf-Jwl" kind="relationship" relationship="rootViewController" id="ahl-Vu-f3u"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFJ-OO-MVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -488,10 +507,60 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="621"/>
+            <point key="canvasLocation" x="2081" y="466"/>
+        </scene>
+        <!--Video Post Detail View Controller-->
+        <scene sceneID="crY-lJ-rcL">
+            <objects>
+                <viewController id="Rc2-Qf-Jwl" customClass="VideoPostDetailViewController" customModule="LambdaTimeline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fPg-8k-9P5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-2h-oUH" customClass="VideoPlayerView" customModule="LambdaTimeline" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="381"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqe-L8-mw2">
+                                <rect key="frame" x="40" y="485" width="295" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1KE-2h-oUH" firstAttribute="trailing" secondItem="rch-mS-ZCx" secondAttribute="trailing" id="644-wc-qoi"/>
+                            <constraint firstItem="rch-mS-ZCx" firstAttribute="trailing" secondItem="qqe-L8-mw2" secondAttribute="trailing" constant="40" id="Eu3-T0-QXk"/>
+                            <constraint firstItem="1KE-2h-oUH" firstAttribute="height" secondItem="fPg-8k-9P5" secondAttribute="height" multiplier="1:1.75" id="Qld-vh-a1s"/>
+                            <constraint firstItem="qqe-L8-mw2" firstAttribute="leading" secondItem="rch-mS-ZCx" secondAttribute="leading" constant="40" id="X8d-kD-qHT"/>
+                            <constraint firstItem="1KE-2h-oUH" firstAttribute="top" secondItem="rch-mS-ZCx" secondAttribute="top" id="Y7r-GK-Rc7"/>
+                            <constraint firstItem="qqe-L8-mw2" firstAttribute="top" secondItem="1KE-2h-oUH" secondAttribute="bottom" constant="40" id="gj7-Jx-3b0"/>
+                            <constraint firstItem="1KE-2h-oUH" firstAttribute="leading" secondItem="rch-mS-ZCx" secondAttribute="leading" id="huf-eQ-SQe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rch-mS-ZCx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7hM-Ow-Sq6">
+                        <barButtonItem key="rightBarButtonItem" title="Play" id="ESz-nc-IPI">
+                            <connections>
+                                <action selector="play:" destination="Rc2-Qf-Jwl" id="ZP6-EZ-oeA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="videoPlayerView" destination="1KE-2h-oUH" id="fV7-kQ-WUF"/>
+                        <outlet property="videoTitleLabel" destination="qqe-L8-mw2" id="UQq-rS-eNB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKj-8n-CaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365.5999999999999" y="938.68065967016503"/>
         </scene>
     </scenes>
     <resources>
         <image name="Record" width="116" height="116"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ahl-Vu-f3u"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         handleAVCaptureAuthorization()
+        collectionView.register(VideoPostCollectionViewCell.self, forCellWithReuseIdentifier: videoCellReuseId)
         
         postController.observePosts { (_) in
             DispatchQueue.main.async {
@@ -64,6 +65,14 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             loadImage(for: cell, forItemAt: indexPath)
             
             return cell
+        case .video:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: videoCellReuseId, for: indexPath) as? VideoPostCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.post = post
+            
+            // loadImage(for: cell, forItemAt: indexPath)
+            
+            return cell
         }
     }
     
@@ -80,6 +89,13 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             guard let ratio = post.ratio else { return size }
             
             size.height = size.width * ratio
+            
+        case .video:
+            
+            guard let ratio = post.ratio else { return size }
+            
+            size.height = size.width * ratio
+            
         }
         
         return size
@@ -182,9 +198,18 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             destinationVC?.postController = postController
             destinationVC?.post = postController.posts[indexPath.row]
             destinationVC?.imageData = cache.value(for: postID)
+        } else if segue.identifier == "ViewVideoPost" {
+            let destinationVC = segue.destination as? VideoPostDetailViewController
+            
+            guard let indexPath = collectionView.indexPathsForSelectedItems?.first,
+                let postID = postController.posts[indexPath.row].id else { return }
+            
+            destinationVC?.post = postController.posts[indexPath.row]
+            destinationVC?.videoData = cache.value(for: postID)
         }
     }
     
+    private let videoCellReuseId = "VideoPostCell"
     private let postController = PostController()
     private var operations = [String : Operation]()
     private let mediaFetchQueue = OperationQueue()
