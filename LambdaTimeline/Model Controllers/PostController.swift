@@ -10,10 +10,16 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import CoreLocation
 
 class PostController {
     
-    func createPost(with title: String, ofType mediaType: MediaType, mediaData: Data, ratio: CGFloat? = nil, completion: @escaping (Bool) -> Void = { _ in }) {
+    func createPost(with title: String,
+                    ofType mediaType: MediaType,
+                    mediaData: Data,
+                    ratio: CGFloat? = nil,
+                    geotag: CLLocationCoordinate2D? = nil,
+                    completion: @escaping (Bool) -> Void = { _ in }) {
         
         guard let currentUser = Auth.auth().currentUser,
             let author = Author(user: currentUser) else { return }
@@ -22,7 +28,7 @@ class PostController {
             
             guard let mediaURL = mediaURL else { completion(false); return }
             
-            let post = Post(title: title, mediaURL: mediaURL, ratio: ratio, author: author, mediaType: mediaType)
+            let post = Post(title: title, mediaURL: mediaURL, ratio: ratio, author: author, mediaType: mediaType, geotag: geotag)
             
             self.postsRef.childByAutoId().setValue(post.dictionaryRepresentation) { (error, ref) in
                 if let error = error {

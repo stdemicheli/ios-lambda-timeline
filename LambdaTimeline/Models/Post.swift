@@ -18,7 +18,7 @@ enum MediaType: String {
 
 class Post: NSObject {
     
-    init(title: String, mediaURL: URL, ratio: CGFloat? = nil, author: Author, timestamp: Date = Date(), mediaType: MediaType, geotag: CLLocationCoordinate2D) {
+    init(title: String, mediaURL: URL, ratio: CGFloat? = nil, author: Author, timestamp: Date = Date(), mediaType: MediaType, geotag: CLLocationCoordinate2D?) {
         self.mediaURL = mediaURL
         self.ratio = ratio
         self.mediaType = mediaType
