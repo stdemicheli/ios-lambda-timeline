@@ -11,7 +11,11 @@ import AVFoundation
 
 class VideoPostDetailViewController: UIViewController {
 
-    var post: Post!
+    var post: Post! {
+        didSet {
+            setupPlayer()
+        }
+    }
     var avPlayer: AVPlayer?
     var videoData: Data?
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
@@ -23,18 +27,23 @@ class VideoPostDetailViewController: UIViewController {
     }
     
     func setupPlayer() {
-        let urlpath = Bundle.main.path(forResource: "sprint12", ofType: "any")
-        let url = URL(string: urlpath!)!
-        // let avPlayer = AVPlayer(url: post.mediaURL)
-        let avPlayer = AVPlayer(url: url)
-        videoPlayerView.player = avPlayer
-        videoPlayerView.player?.play()
+        
+        avPlayer = AVPlayer(url: post.mediaURL)
+        
+        let playerLayer = AVPlayerLayer(player: avPlayer)
+        playerLayer.frame = self.view.bounds
+        self.view.layer.addSublayer(playerLayer)
+        avPlayer?.play()
+//        videoPlayerView?.player = avPlayer
+//        videoPlayerView?.player?.play()
         
         videoTitleLabel?.text = post.title ?? ""
     }
     
     @IBAction func play(_ sender: Any) {
-        videoPlayerView.player?.play()
+        
+        avPlayer?.play()
+        //videoPlayerView.player?.play()
     }
     
 }

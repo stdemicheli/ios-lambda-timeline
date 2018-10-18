@@ -62,7 +62,7 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             
             cell.post = post
             
-            loadImage(for: cell, forItemAt: indexPath)
+            //loadImage(for: cell, forItemAt: indexPath)
             
             return cell
         case .video:
@@ -108,6 +108,10 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         if let cell = cell as? ImagePostCollectionViewCell,
             cell.imageView.image != nil {
             self.performSegue(withIdentifier: "ViewImagePost", sender: nil)
+        }
+        
+        if let cell = cell as? VideoPostCollectionViewCell {
+            self.performSegue(withIdentifier: "ViewVideoPost", sender: nil)
         }
     }
     

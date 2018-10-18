@@ -10,6 +10,11 @@
 		3D0AEF6C2176748900467073 /* AudioCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */; };
 		3D12635721752443000276A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D12635621752443000276A5 /* GoogleService-Info.plist */; };
 		3D12635921753553000276A5 /* ImageFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */; };
+		3D39270E2177CB820000E0C6 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D39270D2177CB820000E0C6 /* CameraPreviewView.swift */; };
+		3D3927102177CBB90000E0C6 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D39270F2177CBB90000E0C6 /* CameraViewController.swift */; };
+		3D3927122177D54B0000E0C6 /* VideoPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3927112177D54B0000E0C6 /* VideoPostCollectionViewCell.swift */; };
+		3D3927142177E7D00000E0C6 /* VideoPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */; };
+		3D3927162177E9BC0000E0C6 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3927152177E9BC0000E0C6 /* VideoPlayerView.swift */; };
 		4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646377B216FDE4B00E7FF73 /* AppDelegate.swift */; };
 		46463781216FDE4B00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4646377F216FDE4B00E7FF73 /* Main.storyboard */; };
 		46463783216FDE4C00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46463782216FDE4C00E7FF73 /* Assets.xcassets */; };
@@ -40,6 +45,11 @@
 		3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentTableViewCell.swift; sourceTree = "<group>"; };
 		3D12635621752443000276A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D39270D2177CB820000E0C6 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		3D39270F2177CBB90000E0C6 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3D3927112177D54B0000E0C6 /* VideoPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostDetailViewController.swift; sourceTree = "<group>"; };
+		3D3927152177E9BC0000E0C6 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		46463778216FDE4B00E7FF73 /* LambdaTimeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LambdaTimeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4646377B216FDE4B00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46463780216FDE4B00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +176,8 @@
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				46CFE6F421707D0000E7FF73 /* ImagePostViewController.swift */,
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
+				3D39270F2177CBB90000E0C6 /* CameraViewController.swift */,
+				3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -174,8 +186,11 @@
 			isa = PBXGroup;
 			children = (
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
+				3D3927112177D54B0000E0C6 /* VideoPostCollectionViewCell.swift */,
 				3D12635821753553000276A5 /* ImageFilterCollectionViewCell.swift */,
 				3D0AEF6B2176748900467073 /* AudioCommentTableViewCell.swift */,
+				3D39270D2177CB820000E0C6 /* CameraPreviewView.swift */,
+				3D3927152177E9BC0000E0C6 /* VideoPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,10 +396,15 @@
 				46A0366D2170158900E7FF73 /* SignInViewController.swift in Sources */,
 				46CFE6FB21714E6100E7FF73 /* Author.swift in Sources */,
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
+				3D3927102177CBB90000E0C6 /* CameraViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
+				3D39270E2177CB820000E0C6 /* CameraPreviewView.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				3D0AEF6C2176748900467073 /* AudioCommentTableViewCell.swift in Sources */,
+				3D3927142177E7D00000E0C6 /* VideoPostDetailViewController.swift in Sources */,
+				3D3927122177D54B0000E0C6 /* VideoPostCollectionViewCell.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
+				3D3927162177E9BC0000E0C6 /* VideoPlayerView.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
 				46463790216FFD1B00E7FF73 /* Post.swift in Sources */,
 				46CFE6F32170757F00E7FF73 /* User+DictionaryRepresentation.swift in Sources */,

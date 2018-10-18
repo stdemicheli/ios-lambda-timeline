@@ -115,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-If-ddw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PkI-rS-ua9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="405"/>
@@ -287,10 +287,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDr-ML-xbB" customClass="CameraPreviewView" customModule="LambdaTimeline" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jao-E9-rND">
-                                        <rect key="frame" x="152.5" y="517" width="70" height="70"/>
+                                        <rect key="frame" x="152.5" y="473" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="A6t-cL-ViV"/>
                                             <constraint firstAttribute="width" constant="70" id="elG-Rs-JFS"/>
@@ -302,7 +302,7 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4r-eb-HzP">
-                                        <rect key="frame" x="147.5" y="283.5" width="80" height="80"/>
+                                        <rect key="frame" x="147.5" y="261.5" width="80" height="80"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-lF-4c3">
                                                 <rect key="frame" x="30" y="30" width="20" height="20"/>
@@ -356,7 +356,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Rc2-Qf-Jwl" kind="relationship" relationship="rootViewController" id="ahl-Vu-f3u"/>
+                        <segue destination="hPa-Td-5A3" kind="relationship" relationship="rootViewController" id="xgj-Z6-deA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFJ-OO-MVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -560,7 +560,4 @@
     <resources>
         <image name="Record" width="116" height="116"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ahl-Vu-f3u"/>
-    </inferredMetricsTieBreakers>
 </document>

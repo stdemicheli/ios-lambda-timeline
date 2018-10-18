@@ -28,4 +28,5 @@ class VideoPlayerView: UIView {
     override static var layerClass: AnyClass {
         return AVPlayerLayer.self
     }
+    
 }
