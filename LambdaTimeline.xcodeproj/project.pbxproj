@@ -16,6 +16,8 @@
 		3D3927142177E7D00000E0C6 /* VideoPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */; };
 		3D3927162177E9BC0000E0C6 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3927152177E9BC0000E0C6 /* VideoPlayerView.swift */; };
 		3D41906721791F8A00A9AD26 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41906621791F8A00A9AD26 /* LocationHelper.swift */; };
+		3D41906921792F5E00A9AD26 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41906821792F5E00A9AD26 /* TabBarViewController.swift */; };
+		3D41906B2179347100A9AD26 /* GeotagMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D41906A2179347100A9AD26 /* GeotagMapViewController.swift */; };
 		4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646377B216FDE4B00E7FF73 /* AppDelegate.swift */; };
 		46463781216FDE4B00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4646377F216FDE4B00E7FF73 /* Main.storyboard */; };
 		46463783216FDE4C00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46463782216FDE4C00E7FF73 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostDetailViewController.swift; sourceTree = "<group>"; };
 		3D3927152177E9BC0000E0C6 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		3D41906621791F8A00A9AD26 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		3D41906821792F5E00A9AD26 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3D41906A2179347100A9AD26 /* GeotagMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeotagMapViewController.swift; sourceTree = "<group>"; };
 		46463778216FDE4B00E7FF73 /* LambdaTimeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LambdaTimeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4646377B216FDE4B00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46463780216FDE4B00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
 				3D39270F2177CBB90000E0C6 /* CameraViewController.swift */,
 				3D3927132177E7D00000E0C6 /* VideoPostDetailViewController.swift */,
+				3D41906821792F5E00A9AD26 /* TabBarViewController.swift */,
+				3D41906A2179347100A9AD26 /* GeotagMapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				46CFE6FB21714E6100E7FF73 /* Author.swift in Sources */,
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
 				3D3927102177CBB90000E0C6 /* CameraViewController.swift in Sources */,
+				3D41906921792F5E00A9AD26 /* TabBarViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
 				3D39270E2177CB820000E0C6 /* CameraPreviewView.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
@@ -412,6 +419,7 @@
 				46463790216FFD1B00E7FF73 /* Post.swift in Sources */,
 				46CFE6F32170757F00E7FF73 /* User+DictionaryRepresentation.swift in Sources */,
 				46D571F32172D43B00E7FF73 /* Cache.swift in Sources */,
+				3D41906B2179347100A9AD26 /* GeotagMapViewController.swift in Sources */,
 				3D12635921753553000276A5 /* ImageFilterCollectionViewCell.swift in Sources */,
 				46CFE7012171559500E7FF73 /* FetchMediaOperation.swift in Sources */,
 				46D571F82173FC2700E7FF73 /* ImagePostDetailTableViewController.swift in Sources */,

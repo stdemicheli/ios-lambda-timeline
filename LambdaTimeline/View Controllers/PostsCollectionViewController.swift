@@ -11,7 +11,7 @@ import AVFoundation
 import FirebaseAuth
 import FirebaseUI
 
-class PostsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PostsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, LambdaTimelineDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -214,7 +214,7 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     private let videoCellReuseId = "VideoPostCell"
-    private let postController = PostController()
+    var postController: PostController!
     private var operations = [String : Operation]()
     private let mediaFetchQueue = OperationQueue()
     private let cache = Cache<String, Data>()
