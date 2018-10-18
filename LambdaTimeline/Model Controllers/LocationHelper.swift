@@ -26,7 +26,7 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     }
     
     func getLocation() -> CLLocation? {
-        locationManager.requestLocation()
+        //locationManager.requestLocation()
         return locationManager.location
     }
     

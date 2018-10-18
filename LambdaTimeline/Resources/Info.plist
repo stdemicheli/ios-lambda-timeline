@@ -51,6 +51,8 @@
 	<string>Please provide access to your microphone.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Please provide access to your camera.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please provide location information.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

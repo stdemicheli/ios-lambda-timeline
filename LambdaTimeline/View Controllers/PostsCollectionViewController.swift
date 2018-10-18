@@ -62,7 +62,7 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             
             cell.post = post
             
-            //loadImage(for: cell, forItemAt: indexPath)
+            loadImage(for: cell, forItemAt: indexPath)
             
             return cell
         case .video:

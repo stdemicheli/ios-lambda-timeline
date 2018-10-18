@@ -148,7 +148,7 @@
                                                     <constraint firstItem="VxD-cu-jHT" firstAttribute="top" secondItem="4eK-5F-H5h" secondAttribute="top" id="rjG-je-eTX"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your post a title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-OA-6Ou">
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your post a title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-OA-6Ou">
                                                 <rect key="frame" x="0.0" y="375" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="3759.1999999999998" y="107.49625187406298"/>
         </scene>
-        <!--View Controller-->
+        <!--Geotag Map View Controller-->
         <scene sceneID="Voe-FQ-BPJ">
             <objects>
-                <viewController id="QKm-mS-Ifw" sceneMemberID="viewController">
+                <viewController id="QKm-mS-Ifw" customClass="GeotagMapViewController" customModule="LambdaTimeline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KVe-DI-6K0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -367,6 +367,9 @@
                         <viewLayoutGuide key="safeArea" id="hRu-XM-Wug"/>
                     </view>
                     <navigationItem key="navigationItem" id="luP-5f-bfg"/>
+                    <connections>
+                        <outlet property="mapView" destination="O8a-Zi-bDH" id="Gms-Mb-APg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eur-Tz-Zpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

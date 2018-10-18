@@ -21,6 +21,7 @@ class ImagePostViewController: ShiftableViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        locationHelper.requestAuthorization()
     }
     
     func updateViews() {
@@ -66,7 +67,9 @@ class ImagePostViewController: ShiftableViewController {
             return
         }
         
-        postController.createPost(with: title, ofType: .image, mediaData: imageData, ratio: imageView.image?.ratio) { (success) in
+        let location = locationHelper.getLocation()
+        
+        postController.createPost(with: title, ofType: .image, mediaData: imageData, ratio: imageView.image?.ratio, geotag: location?.coordinate) { (success) in
             guard success else {
                 DispatchQueue.main.async {
                     self.presentInformationalAlertController(title: "Error", message: "Unable to create post. Try again.")
@@ -173,6 +176,7 @@ class ImagePostViewController: ShiftableViewController {
     
     var postController: PostController!
     var post: Post?
+    let locationHelper = LocationHelper()
     var imageData: Data?
     var image: UIImage?
     private let context = CIContext(options: nil)
